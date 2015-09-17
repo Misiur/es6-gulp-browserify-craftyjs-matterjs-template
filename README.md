@@ -1,17 +1,27 @@
-## es6-gulp-browserify-template
+## es6-gulp-browserify-game-template
 
 This repository contains a basic project template for HTML5 games.
+
+### Features:
+
+* ES6 using Babel
+* Node like module importing using Browserify
+* Build automation using gulp
+* Source file watching and livereload
+* GH-Pages quick hosting
 
 ### View:
 
 The template is running live [here](http://adelciotto.github.io/es6-gulp-browserify-game-template/)
+
+![preview](http://imgur.com/4WbeQww.png)
 
 ### Using the template
 
 #### clone the repo
 
 ```shell
-git clone https://github.com/adelciotto/es6-gulp-browserify-game-template.git -o
+git clone https://github.com/adelciotto/es6-gulp-browserify-game-template.git
 your-game-name/
 cd your-game-name
 ```
@@ -44,4 +54,8 @@ directory:
 ```shell
 ./scripts/deploy
 ```
+If you require a force push, then run this command:
 
+```shell
+git push origin `git subtree split --prefix dist master`:gh-pages --force
+```
