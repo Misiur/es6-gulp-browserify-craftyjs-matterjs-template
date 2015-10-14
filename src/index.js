@@ -1,44 +1,59 @@
-/*
- * index.js
- * Copyright (C) 2015 adelciotto <anthdel.developer@gmail.com>
- *
- * Distributed under terms of the MIT license.
- */
+import debuglib from 'debug';
 
-import _ from 'underscore';
+window.log = debuglib('game:log');
+window.error = debuglib('game:error');
+
+import Crafty from 'craftyjs';
+import Stats from 'stats.js';
 import raf from 'raf';
+import 'matter-js';
+import 'crafty-matter';
+debuglib.enable('game:*');
 
-let canvas = null;
-let ctx = null;
-let img = null;
+window.Game = {};
 
-function init() {
-    // create a html5 canvas element
-    canvas = document.createElement('canvas');
-    canvas.width = 480;
-    canvas.height = 320;
-    document.body.appendChild(canvas);
-
-    // grab a 2D context to draw to
-    ctx = canvas.getContext('2d');
-
-    // on image load begin animating
-    img = new Image();
-    img.onload = () => {
-        raf(animate);
-    };
-    img.src = 'res/img/html.png';
-}
-
-function animate() {
-    raf(animate);
-
-    ctx.fillStyle = 'black';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.drawImage(img, canvas.width/2 - img.width/2, canvas.height/2 -
-            img.height/2);
-}
-
-window.onload = function() {
-    init();
+Game.settings = {
+    width: 750,
+    height: 300
 };
+
+Crafty.init(Game.settings.width, Game.settings.height);
+
+Crafty.Matter.init({
+    debug: true,
+    gravity: {
+        x: 0,
+        y: 0.098
+    }
+});
+
+Crafty.background('#a5e8ff');
+
+Crafty.e('Matter, Color')
+    .attr({ x: 0, y: 290, w: 600, h: 10, matter: {
+        isStatic: true
+    } })
+    .color('#BADA55');
+
+Crafty.e('Matter, Color')
+    .attr({ x: 50, y: 0, w: 20, h: 20 })
+    .color('#BADA55');
+
+
+var stats = new Stats();
+stats.setMode(0);
+
+stats.domElement.style.position = 'absolute';
+stats.domElement.style.left = '0px';
+stats.domElement.style.top = '0px';
+
+document.body.appendChild( stats.domElement);
+
+raf(function update() {
+    stats.begin();
+
+
+    stats.end();
+
+    raf( update );
+});
