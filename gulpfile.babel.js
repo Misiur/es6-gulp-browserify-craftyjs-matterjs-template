@@ -15,10 +15,18 @@ global.paths = {
     res: './res',
     dist: './dist',
 
-    get scripts() { return this.js + '/**/*.js'; },
-    get jsEntry() { return this.js + '/index.js'; },
-    get index() { return './index.html'; },
-    get resources() { return this.res + '/**/*'; },
+    get scripts() {
+        return this.js + '/**/*.js';
+    },
+    get jsEntry() {
+        return this.js + '/index.js';
+    },
+    get index() {
+        return './index.html';
+    },
+    get resources() {
+        return this.res + '/**/*';
+    },
 };
 
 // cache node environment type
@@ -27,15 +35,17 @@ global.isDevEnv = (process.env.NODE_ENV === 'development');
 // Require each of the gulp tasks from the 'gulp/' folder.
 // Each task is split into it's own file to avoid having one large and difficult
 // gulp script to maintain.
-requireDir('./gulp', { recurse: true });
+requireDir('./gulp', {
+    recurse: true
+});
 
 // define the build task
-gulp.task('build', function(done) {
+gulp.task('build', function (done) {
     runSeq('clean', 'copy', 'assets', ['jshint', 'scripts'], done);
 });
 
 // define the main tasks for each different build mode
-gulp.task('start', function(done) {
+gulp.task('start', function (done) {
     runSeq('build', 'serve', done);
 });
 

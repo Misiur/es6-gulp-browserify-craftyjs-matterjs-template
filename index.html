@@ -26,11 +26,12 @@
     body {
       margin: 0;
       padding: 0;
-      background: #222 url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAMAAAC67D+PAAAAFVBMVEUqKiopKSkoKCgjIyMuLi4kJCQtLS0dJckpAAAAO0lEQVR42iXLAQoAUQhCQSvr/kfe910jHIikElsl5qVFa1iE5f0Pom/CNZdbNM6756lQ41NInMfuFPgAHVEAlGk4lvIAAAAASUVORK5CYII=");
+      background: #222;
       color: black;
       font-family: Verdana,sans-serif;
     }
     canvas {
+      user-select: none;
       /* Uncomment this for css pixel scaling
       image-rendering:optimizeSpeed;
       image-rendering:-moz-crisp-edges;
@@ -54,7 +55,7 @@
 
 <body>
   <!-- Main Content Section -->
-  <div id="game"></div>
+  <div id="cr-stage"></div>
 
   <script src="js/bundle.js"></script>
 </body>

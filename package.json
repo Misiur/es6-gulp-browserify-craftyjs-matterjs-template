@@ -2,9 +2,9 @@
   "name": "es6-gulp-browserify-game-template",
   "version": "1.0.0",
   "scripts": {
-    "dev": "NODE_ENV='development' gulp start",
-    "prod": "NODE_ENV='production' gulp start",
-    "build": "NODE_ENV='production' gulp build"
+    "dev": "set DEBUG=game:*&&set NODE_ENV=development&&gulp start",
+    "prod": "set NODE_ENV=production&&gulp start",
+    "build": "set NODE_ENV=production&&gulp build"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,9 @@
     "babel-core": "^5.8.24",
     "babelify": "6.1.2",
     "browserify": "10.2.4",
+    "crafty-matter": "git://github.com/misiur/craftymatter.git",
+    "craftyjs": "^0.6.3",
+    "debug": "^2.2.0",
     "del": "^1.1.1",
     "gulp": "^3.8.11",
     "gulp-cached": "1.1.0",
@@ -31,9 +34,13 @@
     "gulp-livereload": "^3.8.0",
     "gulp-sourcemaps": "^1.5.0",
     "gulp-uglify": "^1.4.1",
+    "gulp-util": "^3.0.6",
     "jshint-stylish": "^2.0.1",
+    "matter-js": "^0.8.0",
+    "merge-stream": "^1.0.0",
     "require-dir": "^0.3.0",
     "run-sequence": "^1.1.2",
+    "stats.js": "0.0.14-master",
     "vinyl-buffer": "1.0.0",
     "vinyl-source-stream": "1.1.0",
     "watchify": "3.2.2"
@@ -41,5 +48,8 @@
   "dependencies": {
     "raf": "^3.1.0",
     "underscore": "^1.8.3"
+  },
+  "browser": {
+    "matter-js": "matter-js/build/matter.js"
   }
 }

@@ -20,6 +20,7 @@ gulp.task('serve', function() {
 
     return connect.server({
         root: global.paths.dist,
+        livereload: true,
         port: 8000
     });
 });
